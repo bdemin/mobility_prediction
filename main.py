@@ -17,6 +17,20 @@ train_y = train_df[['mobility']]
 #view dataframe
 train_y.head()
 
+
+from keras.models import Sequential
+from keras.layers import Dense
+#create model
+model = Sequential()
+
+#get number of columns in training data
+n_cols = train_X.shape[1]
+
+#add model layers
+model.add(Dense(10, activation='relu', input_shape=(n_cols,)))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(1))
+
 #compile model using mse as a measure of model performance
 model.compile(optimizer='adam', loss='mean_squared_error')
 
